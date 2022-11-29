@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="review.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <title>Reviews</title>
+     <style>
+          @import url('https://fonts.googleapis.com/css2?family=Abel&family=Anek+Devanagari:wght@300&family=Inter+Tight:wght@200&family=League+Gothic&family=Manuale&family=Roboto&family=Signika+Negative&display=swap');
+*{
+     margin:0%;
+     padding: 0%;
+     box-sizing: border-box;
+}
+.container{
+     width: 50vw;
+     padding: 70px;
+     margin: auto;
+     background-color: aliceblue;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     gap:9px;
+     margin-top: 10%;
+     justify-content: center;
+     align-items: center;
+}
+.review{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+#name{
+     font-family: 'Anek Devanagari', sans-serif;
+
+}
+#desc,#random{
+     font-family: 'Abel', sans-serif;
+   
+     text-align: center;
+}
+#job{
+     font-family: 'Inter Tight', sans-serif;
+
+}
+.icons{
+     display: flex;
+     gap:90px;
+     cursor: pointer;
+}
+#random{
+     padding: 5px;
+     background-color: black;
+     color: white;
+     cursor: pointer;
+     border-radius: 18px;
+}
+     </style>
+</head>
+<body>
+     <div class="container">
+          <div class="review"> 
+          <h2 id="name">MARTHA</h2>
+          <p id="job">Software</p>
+          <p id="desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, impedit odio! Quia corrupti odio magnam odit a, aut officiis, nemo magni assumenda quibusdam quasi dolorem deleniti tempore reiciendis optio minus.</p>
+          </div>
+          <div class="icons"> 
+               <i class="fa-solid fa-backward-fast" id="prev"></i>
+               <i class="fa-solid fa-forward-fast" id="next"></i>
+          </div>
+     <button id="random">  RANDOM REVIEW</button>
+     </div>
+<script src="review.js">
+     let next = document.getElementById('next');
+let prev = document.getElementById('prev');
+let names = document.getElementById("name");
+let job = document.getElementById('job');
+let desc = document.getElementById('desc');
+let random = document.getElementById('random');
+let reviews = [
+     {
+          name:"MARTHA",
+          job:"Software",
+          desc:"MARTHA ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, impedit odio! Quia corrupti odio magnam odit a, aut officiis, nemo magni assumenda quibusdam quasi dolorem deleniti tempore reiciendis optio minus."
+     },
+     {
+          name:"RAM",
+          job:"Soldier",
+          desc:"RAM ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, impedit odio! Quia corrupti odio magnam odit a, aut officiis, nemo magni assumenda quibusdam quasi dolorem deleniti tempore reiciendis optio minus."
+     },
+     {
+          name:"MOHAMMAD",
+          job:"Software",
+          desc:"MOHAMMAD ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, impedit odio! Quia corrupti odio magnam odit a, aut officiis, nemo magni assumenda quibusdam quasi dolorem deleniti tempore reiciendis optio minus."
+     },
+     {
+          name:"THIRUMALESH",
+          job:"CEO",
+          desc:"THIRUMALESH ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, impedit odio! Quia corrupti odio magnam odit a, aut officiis, nemo magni assumenda quibusdam quasi dolorem deleniti tempore reiciendis optio minus."
+     },
+     {
+          name:"SARA",
+          job:"Fictoinal Friend",
+          desc:"SARA ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, impedit odio! Quia corrupti odio magnam odit a, aut officiis, nemo magni assumenda quibusdam quasi dolorem deleniti tempore reiciendis optio minus."
+     }
+];
+let currents = 0;
+next.onclick=function(){
+  currents++;
+ if(currents>reviews.length-1){
+     currents=0;
+ }  
+ show(currents)
+}
+prev.onclick=function(){
+     currents--;
+     if(currents<0){
+          currents=reviews.length-1;
+     }
+show(currents);
+}
+random.onclick = function(){
+     show(Math.floor(Math.random()*reviews.length))
+}
+function show(current){
+names.innerText=reviews[current].name;
+ job.innerText=reviews[current].job;
+ desc.innerText=reviews[current].desc;
+
+}
+</script>   
+</body>
+</html>
